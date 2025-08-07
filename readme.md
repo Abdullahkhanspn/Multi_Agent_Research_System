@@ -1,4 +1,5 @@
 # 🧠 Multi-Agent Research System with PDF Report Generation
+![working](https://github.com/user-attachments/assets/3327eca6-4101-48fe-8dfb-5968dc30bca2)
 
 This project implements an automated research system that processes user queries and generates professional PDF reports using a multi-agent architecture powered by the Groq API.
 
