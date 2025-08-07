@@ -1,38 +1,75 @@
-# Multi-Agent Research System
+# 🧠 Multi-Agent Research System with PDF Report Generation
 
-An automated research system that processes user queries and generates professional PDF reports using a 4-agent architecture with Groq API.
+This project implements an automated research system that processes user queries and generates professional PDF reports using a multi-agent architecture powered by the Groq API.
 
-## 🏗️ Architecture
 
-### Agent 1: Query Processor
+## 📌 Overview
 
-- Decomposes user queries into 3-5 focused sub-queries
-- Validates sub-queries for relevance and specificity
-- Handles edge cases (vague queries, single-word inputs)
+The system transforms an input query into a structured, human-readable PDF report (300–500 words). It uses Groq's LLM to decompose the query, scrape relevant content from the web, summarize findings, and generate a styled PDF document - all in memory.
 
-### Agent 2: Data Collector
 
-- Searches and scrapes 2-3 web sources per sub-query
-- Extracts relevant content (500-1000 words per source)
-- Implements rate limiting and error handling
+## ⚙️ Core Requirements
 
-### Agent 3: Content Analyzer
+### ✅ Input / Output
 
-- Synthesizes collected data into coherent summary
-- Structures content with clear sections
-- Handles Groq's context limits (truncates to ~4000 chars)
+- **Input**: Research query string (e.g., `"Impact of AI in healthcare"`)
+- **Output**: PDF report with 3–5 sections based on sub-queries
 
-### Agent 4: Report Generator
+## 🧱 System Architecture
 
-- Creates professional PDF reports
-- Includes title page with query and date
-- Performs basic quality checks
+### 🧩 Agent 1: Query Processor
+- Uses Groq API to decompose user query into 3–5 focused sub-queries
+- Removes duplicates and checks relevance to the main query
+- Handles vague or single-word queries with fallback logic
 
-## Setup
+### 🌐 Agent 2: Data Collector
+- Searches and scrapes 2–3 web sources per sub-query
+- Extracts clean, structured content (500–1000 words per source)
+- Removes irrelevant content (ads, navigation bars, etc.)
+- Handles scraping failures and implements basic rate limiting
 
-### 1. Install Dependencies
+### 📚 Agent 3: Content Analyzer
+- Synthesizes collected data using Groq API
+- Structures content into 3–4 main sections
+- Ensures summaries are coherent, within Groq's context limits (~4000 characters)
+- Highlights key insights and findings per topic
+
+### 📝 Agent 4: Report Generator
+- Generates professional PDF report using ReportLab
+- Includes:
+  - Title page with query and date
+  - Structured sections with headings and paragraphs
+  - Optional source citations
+- Performs quality checks (word count, formatting, structure)
+
+## 🛠️ Technical Stack
+
+- **Language**: Python 3.8+
+- **LLM**: [Groq API](https://console.groq.com/docs)
+- **Web Scraping**: Playwright, BeautifulSoup
+- **PDF Generation**: ReportLab
+- **Env Management**: python-dotenv
+
+## 🔧 Setup Instructions
+
+### 1. Clone Repository
 
 ```bash
-pip install -r requirements.txt
-playwright install chromium
-```
+git clone https://github.com/yourusername/multi-agent-research-system.git
+cd multi-agent-research-system
+
+
+## 📂 Project Structure
+├── agents/
+│   ├── query_processor.py
+│   ├── data_collector.py
+│   ├── content_analyzer.py
+│   └── report_generator.py
+├── browser.py
+├── groq_client.py
+├── main.py
+├── .env
+├── requirements.txt
+├── README.md
+└── sample_outputs/
+    └── ai_in_education_report.pdf
