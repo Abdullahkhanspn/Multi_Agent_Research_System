@@ -1,0 +1,7 @@
+groq
+playwright
+python-dotenv
+serpapi
+reportlab
+beautifulsoup4
+requests
